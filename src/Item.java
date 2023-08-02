@@ -1,12 +1,14 @@
-public class Item {
+public abstract class Item {
     private String name;
     private double price;
     private int quantity;
+    private boolean imported;
 
-    public Item(String name, double price, int quantity) {
+    public Item(String name, double price, int quantity, boolean imported) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
+        this.imported = imported;
     }
 
     public String getName() {
@@ -22,6 +24,10 @@ public class Item {
     }
 
     public boolean isImported() {
-        return name.toLowerCase().contains("imported");
+        return imported;
     }
+
+    public abstract double calculateSalesTax();
+
+    public abstract String getDetails();
 }
